@@ -19,7 +19,7 @@ const serviceData = [
   },
   {
     icon: "ri-exchange-dollar-line",
-    title: " Back Guarantee",
+    title: "Back Guarantee",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#d6e5fb",
   },

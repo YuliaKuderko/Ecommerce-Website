@@ -5,6 +5,7 @@ import heroImg from '../assets/images/hero-img.png';
 import '../styles/home.css'
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Services from '../components/Services/Services';
 
 function Home() {
   const year = new Date().getFullYear();
@@ -16,16 +17,26 @@ function Home() {
           <Row>
             <Col lg='6' md='6'>
               <div className="hero-content">
-                <p className="hero-subtitle">Trending product in {year}</p>
+                <p className="hero-subtitle">Trending products in {year}</p>
                 <h2>Make Your Interior More Minimalistic & Modern</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam accusantium consequuntur eos perferendis error? Adipisci omnis ab accusantium suscipit, libero deserunt, quasi earum incidunt facere blanditiis repudiandae placeat quibusdam nihil.</p>
-                <motion.button whileTap={{scale:1.1}} className="shop-btn"><Link to='/shop'>SHOP NOW</Link></motion.button>
+                <motion.button whileTap={{ scale: 1.1 }} className="shop-btn"><Link to='/shop'>SHOP NOW</Link></motion.button>
               </div>
             </Col>
             <Col lg='6' md='6'>
               <div className="hero-img">
                 <img src={heroImg} alt="" />
               </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Services />
+      <section className='trending-products'>
+        <Container>
+          <Row>
+            <Col lg='12' className='text-center'>
+              <h2 className='section-title'>Trending Products</h2>
             </Col>
           </Row>
         </Container>
