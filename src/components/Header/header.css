@@ -27,6 +27,10 @@
     color: var(--primary-color);
 }
 
+.logo h1 a:hover{
+    color: var(--primary-color);
+}
+
 .menu{
     display: flex;
     align-items: center;

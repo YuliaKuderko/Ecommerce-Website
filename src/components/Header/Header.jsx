@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './header.css';
 import { Container } from 'reactstrap';
 import logo from '../../assets/images/eco-logo.png';
@@ -28,7 +28,7 @@ function Header() {
                         <div className="logo">
                             <img src={logo} alt="logo" />
                             <div>
-                                <h1>MyStore</h1>
+                                <h1><Link to=''>MyStore</Link></h1>
                             </div>
                         </div>
                         <div className="navigation">
