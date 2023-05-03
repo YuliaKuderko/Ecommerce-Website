@@ -76,14 +76,17 @@ function Home() {
                 <h4 className='text-white fs-6 mb-2'>Limited Offers</h4>
                 <h3 className='text-white fs-5 mb-3'>Quality Armchair</h3>
               </div>
-              <Clock/>
-              <motion.button whileTap={{scale:1.05}} className='shop-btn store-btn'><Link to='/shop'>Visit Store</Link></motion.button>
+              <Clock />
+              <motion.button whileTap={{ scale: 1.05 }} className='shop-btn store-btn'><Link to='/shop'>Visit Store</Link></motion.button>
             </Col>
             <Col lg='6' md='6' className='text-end'>
               <img src={counterImg} alt="" />
             </Col>
           </Row>
         </Container>
+      </section>
+      <section className="new-arrivals">
+        
       </section>
     </Helmet>
   )
