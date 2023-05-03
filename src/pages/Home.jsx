@@ -12,17 +12,26 @@ import counterImg from '../assets/images/counter-timer-img.png';
 import Clock from '../components/UI/Clock';
 
 function Home() {
-  const [trendingProducts, setTrendingProducts] = useState(products);
-  const [bestSalesProducts, setBestSalesProducts] = useState(products);
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
+  const [wirelessProducts, setWirelessProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
 
   const year = new Date().getFullYear();
 
   useEffect(() => {
     const filteredTrendingProducts = products.filter(item => item.category === 'chair');
     const filteredBestSalesProducts = products.filter(item => item.category === 'sofa');
+    const filteredMobileProducts = products.filter(item => item.category === 'mobile');
+    const filteredWirelessProducts = products.filter(item => item.category === 'wireless');
+    const filteredPopularProducts = products.filter(item => item.category === 'watch');
 
     setTrendingProducts(filteredTrendingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWirelessProducts);
+    setPopularProducts(filteredPopularProducts);
   }, []);
 
 
@@ -86,7 +95,25 @@ function Home() {
         </Container>
       </section>
       <section className="new-arrivals">
-        
+        <Container>
+          <Row>
+          <Col lg='12' className='text-center'>
+              <h2 className='section-title'>New Arrivals</h2>
+              <ProductsList data={mobileProducts} />
+              <ProductsList data={wirelessProducts} />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section className='popular-category'>
+      <Container>
+          <Row>
+          <Col lg='12' className='text-center'>
+              <h2 className='section-title mb-5'>Popular in Category</h2>
+              <ProductsList data={popularProducts} />
+            </Col>
+          </Row>
+        </Container>
       </section>
     </Helmet>
   )
