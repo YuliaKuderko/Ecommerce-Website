@@ -11,13 +11,13 @@ function Footer() {
     <footer className='footer'>
       <Container>
         <Row>
-          <Col lg='4'>
+          <Col lg='4' md='6' className='mb-4'>
             <div className="logo">
                 <h1 className='text-white'>MyStore</h1>
             </div>
             <p className="footer-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus neque similique voluptatum accusantium deleniti soluta. Illo inventore nam molestiae pariatur asperiores sit exercitationem? Fuga soluta amet iste voluptatum sit odit?</p>
           </Col>
-          <Col lg='3'>
+          <Col lg='3' md='3' className='mb-4'>
             <div className="footer-quick-links">
               <h4 className="quick-links-titles">Top Categories</h4>
               <ListGroup>
@@ -36,7 +36,7 @@ function Footer() {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='2'>
+          <Col lg='2' md='3' className='mb-4'>
             <div className="footer-quick-links">
               <h4 className="quick-links-titles">Useful Links</h4>
               <ListGroup>
@@ -60,10 +60,6 @@ function Footer() {
               <h4 className="quick-links-titles">Contact</h4>
               <ListGroup>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <span className='fs-5'><i class="ri-linkedin-box-fill"></i></span>
-                  <p><a href='https://www.linkedin.com/in/yuliakuderko/'>https://www.linkedin.com/in/yuliakuderko/</a></p>
-                </ListGroupItem>
-                <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
                   <span className='fs-5'><i class="ri-phone-line"></i></span>
                   <p>+972-544353091</p>
                 </ListGroupItem>
@@ -72,8 +68,12 @@ function Footer() {
                   <p>yulia2232@gmail.com</p>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
+                  <span className='fs-5'><i class="ri-linkedin-box-fill"></i></span>
+                  <p><a href='https://www.linkedin.com/in/yuliakuderko/'>LinkedIn</a></p>
+                </ListGroupItem>
+                <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
                   <span className='fs-5'><i class="ri-github-fill"></i></span>
-                  <p><a href='https://github.com/YuliaKuderko/Ecommerce-Website'>https://github.com/YuliaKuderko/Ecommerce-Website</a></p>
+                  <p><a href='https://github.com/YuliaKuderko/Ecommerce-Website'>GitHub</a></p>
                 </ListGroupItem>
               </ListGroup>
             </div>

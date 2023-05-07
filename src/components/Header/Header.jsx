@@ -24,6 +24,8 @@ const nav_links = [
 function Header() {
     const headerRef = useRef(null);
 
+    const menuRef = useRef(null);
+
     function scrollToTop() {
         window.scrollTo({
             top: 0
@@ -46,7 +48,9 @@ function Header() {
         return () => {
             window.removeEventListener('scroll', stickyHeader)
         }
-    },)
+    },);
+
+    const menuToggle = () => { menuRef.current.classList.toggle('active-menu'); }
 
 
     return (
@@ -59,7 +63,7 @@ function Header() {
                             <h1><Link to='' onClick={scrollToTop}>MyStore</Link></h1>
                         </div>
                     </div>
-                    <div className="navigation">
+                    <div className="navigation" ref={menuRef} onClick={menuToggle}>
                         <ul className="menu">
                             {nav_links.map((item, i) => (
                                 <li className="nav-item" key={i}>
@@ -78,10 +82,11 @@ function Header() {
                             <span className='badge'>1</span>
                         </span>
                         <span><motion.img whileTap={{ scale: 1.1 }} src={userIcon} alt="user" /></span>
+                        <div className='mobile-menu'>
+                            <span className='mobile-icon' onClick={menuToggle}><i class="ri-menu-line"></i></span>
+                        </div>
                     </div>
-                    <div className='mobile-menu'>
-                        <span className='mobile-icon'><i class="ri-menu-line"></i></span>
-                    </div>
+
                 </div>
             </Container>
         </header>

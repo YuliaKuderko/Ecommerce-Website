@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/clock.css';
 
 function Clock() {
     const [days, setDays] = useState();
@@ -8,7 +9,7 @@ function Clock() {
 
     let interval;
 
-    const countDown = () => {
+    function countDown(){
         const destination = new Date('May 10, 2023').getTime();
 
         interval = setInterval(() => {

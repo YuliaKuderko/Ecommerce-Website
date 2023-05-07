@@ -1,67 +1,66 @@
-.header{
+.header {
     width: 100%;
     height: 70px;
     line-height: 70px;
 }
 
-.nav-wrapper{
+.nav-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     column-gap: 8px;
 }
 
-.logo img{
+.logo img {
     width: 24px;
     height: 24px;
 }
 
-.logo h1{
+.logo h1 {
     font-size: 20px;
     font-weight: 700;
     color: var(--primary-color);
 }
 
-.logo h1 a:hover{
+.logo h1 a:hover {
     color: var(--primary-color);
 }
 
-.menu{
+.menu {
     display: flex;
     align-items: center;
     column-gap: 43px;
     margin-bottom: 0;
 }
 
-.nav-item a{
+.nav-item a {
     color: var(--primary-color);
     font-weight: 500;
     cursor: pointer;
 }
 
-.nav-icons{
+.nav-icons {
     display: flex;
-    align-items: center;
     column-gap: 20px;
 }
 
-.nav-icons span i{
+.nav-icons span i {
     font-size: 19px;
     color: var(--primary-color);
     cursor: pointer;
 }
 
-.cart-icon, 
-.fav-icon{
+.cart-icon,
+.fav-icon {
     position: relative;
 }
 
-.badge{
+.badge {
     position: absolute;
     top: 25%;
     right: -30%;
@@ -80,23 +79,24 @@
     outline: 1px solid white;
 }
 
-.nav-icons img{
+.nav-icons img {
     width: 30px;
     height: 30px;
     cursor: pointer;
+    margin-bottom: 8px;
 }
 
-.mobile-menu{
+.mobile-menu {
     font-size: 20px;
     color: var(--primary-color);
     display: none;
 }
 
-.nav-active{
+.nav-active {
     font-weight: 700 !important;
 }
 
-.sticky-header{
+.sticky-header {
     width: 100%;
     height: 70px;
     line-height: 70px;
@@ -109,4 +109,70 @@
 }
 
 
+@media screen and (max-width:768px) {
+    .navigation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #00000079;
+        z-index: 9999;
+        display: none;
+    }
 
+    .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100%;
+        background: white;
+        z-index: 99999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .active-menu {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .mobile-menu span i {
+        font-size: 18px !important;
+    }
+
+    .logo img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .logo h1 {
+        font-size: 16px;
+    }
+
+    .fav-icon i,
+    .cart-icon i {
+        font-size: 20px !important;
+    }
+
+    .badge {
+        font-size: 9px;
+    }
+
+    .nav-icons span img {
+        width: 25px;
+        height: 25px;
+        margin-top: 5px;
+    }
+
+    .header {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+    }
+}

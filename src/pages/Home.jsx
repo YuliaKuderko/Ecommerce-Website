@@ -80,7 +80,7 @@ function Home() {
       <section className="timer-count">
         <Container>
           <Row>
-            <Col lg='6' md='6'>
+            <Col lg='6' md='12' className='count-down-col'>
               <div className="clock-top-content">
                 <h4 className='text-white fs-6 mb-2'>Limited Offers</h4>
                 <h3 className='text-white fs-5 mb-3'>Quality Armchair</h3>
@@ -88,7 +88,7 @@ function Home() {
               <Clock />
               <motion.button whileTap={{ scale: 1.05 }} className='shop-btn store-btn'><Link to='/shop'>Visit Store</Link></motion.button>
             </Col>
-            <Col lg='6' md='6' className='text-end'>
+            <Col lg='6' md='12' className='text-end counter-img'>
               <img src={counterImg} alt="" />
             </Col>
           </Row>
@@ -97,18 +97,18 @@ function Home() {
       <section className="new-arrivals">
         <Container>
           <Row>
-          <Col lg='12' className='text-center'>
+            <Col lg='12' className='text-center'>
               <h2 className='section-title'>New Arrivals</h2>
-              <ProductsList data={mobileProducts} />
-              <ProductsList data={wirelessProducts} />
             </Col>
+            <ProductsList data={mobileProducts} />
+            <ProductsList data={wirelessProducts} />
           </Row>
         </Container>
       </section>
       <section className='popular-category'>
-      <Container>
+        <Container>
           <Row>
-          <Col lg='12' className='text-center'>
+            <Col lg='12' className='text-center'>
               <h2 className='section-title mb-5'>Popular in Category</h2>
               <ProductsList data={popularProducts} />
             </Col>
