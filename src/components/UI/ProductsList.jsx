@@ -6,8 +6,8 @@ function ProductsList({ data }) {
     return (
         <Row>
             {
-                data?.map(item => (
-                    <ProductCard item={item} />
+                data?.map((item, i) => (
+                    <ProductCard item={item} key={i}/>
                 ))
             }
         </Row>
