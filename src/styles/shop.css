@@ -1,3 +1,7 @@
+.filter-widget{
+    margin-bottom: 20px;
+}
+
 .filter-widget select{
     padding: 8px 20px;
     border: 1px solid var(--primary-color);
@@ -32,4 +36,12 @@
 
 .search-box span{
     color: var(--primary-color);
+}
+
+@media screen and (max-width:768px) {
+
+    .filter-widget select{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
 }

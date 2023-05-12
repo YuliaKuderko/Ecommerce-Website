@@ -23,7 +23,7 @@ const labels = {
 
 function ProductDetails() {
   const [tab, setTab] = useState('desc');
-  const [reviewValue, setReviewValue] = useState(null);
+  const [reviewValue, setReviewValue] = useState(0);
   const [reviewHover, setReviewHover] = useState(-1);
   const reviewUser = useRef('');
   const reviewMsg = useRef('');

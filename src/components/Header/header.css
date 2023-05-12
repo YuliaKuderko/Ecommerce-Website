@@ -176,3 +176,9 @@
         line-height: 60px;
     }
 }
+
+@media screen and (max-width:560px) {
+    .menu {
+        width: 210px;
+    }
+}

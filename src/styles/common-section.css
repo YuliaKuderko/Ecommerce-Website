@@ -11,3 +11,19 @@
     color: white;
     font-weight: 600;
 }
+
+@media screen and (max-width:768x){
+    .common-section{
+        padding: 70px 0px;
+    }
+
+    .common-section h1{
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:560px) {
+    .common-section h1{
+        font-size: 22px;
+    }
+}

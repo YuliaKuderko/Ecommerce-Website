@@ -83,3 +83,10 @@
     font-weight: 600;
     margin-top: 70px;
 }
+
+@media screen and (max-width:768px) {
+    .product-details h2{
+        font-size: 20px;
+    }
+}
+
