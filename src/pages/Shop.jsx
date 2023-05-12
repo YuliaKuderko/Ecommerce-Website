@@ -46,10 +46,10 @@ function Shop() {
     } */
   }
 
-  function handleSearch(e){
+  function handleSearch(e) {
     const searchTerm = e.target.value;
 
-    const searchedProducts = products.filter(item=>item.productName.toLowerCase().includes(searchTerm.toLowerCase()));
+    const searchedProducts = products.filter(item => item.productName.toLowerCase().includes(searchTerm.toLowerCase()));
 
     setProductsData(searchedProducts);
   }
@@ -84,7 +84,7 @@ function Shop() {
             </Col>
             <Col lg='6' md='6'>
               <div className="search-box">
-                <input type="text" placeholder='Search....' onChange={handleSearch}/>
+                <input type="text" placeholder='Search....' onChange={handleSearch} />
                 <span><i class="ri-search-line"></i></span>
               </div>
             </Col>
