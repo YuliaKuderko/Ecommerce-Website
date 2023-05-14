@@ -49,7 +49,6 @@ function Cart() {
               <div>
                 <Link to='/checkout'><button className="shop-btn w-100 ">Checkout</button></Link>
                 <Link to='/shop'><button className="shop-btn w-100 mt-3">Continue Shopping</button></Link>
-                
               </div>
             </Col>
           </Row>
