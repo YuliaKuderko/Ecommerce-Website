@@ -16,7 +16,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <ToastContainer
-          theme="light"
+          theme="dark"
           position="top-left"
           autoClose={3000}
           transition={Flip}
