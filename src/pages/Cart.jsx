@@ -47,8 +47,9 @@ function Cart() {
               </div>
               <p className='fs-6 mt-2'>taxes and shipping will be calculated in checkout</p>
               <div>
-                <button className="shop-btn w-100 "><Link to='/checkout'>Checkout</Link></button>
-                <button className="shop-btn w-100 mt-3"><Link to='/shop'>Continue Shopping</Link></button>
+                <Link to='/checkout'><button className="shop-btn w-100 ">Checkout</button></Link>
+                <Link to='/shop'><button className="shop-btn w-100 mt-3">Continue Shopping</button></Link>
+                
               </div>
             </Col>
           </Row>
