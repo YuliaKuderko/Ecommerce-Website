@@ -79,11 +79,36 @@
     outline: 1px solid white;
 }
 
-.nav-icons img {
+.nav-icons .profile img {
     width: 30px;
     height: 30px;
     cursor: pointer;
     margin-bottom: 8px;
+    border-radius: 50px;
+}
+
+.nav-icons .profile{
+    position: relative;
+    z-index: 9;
+}
+
+.profile-actions{
+    position: absolute;
+    top: 95%;
+    left: 0;
+    width: 150px;
+    z-index: 10;
+    padding: 15px;
+    align-items: center;
+    flex-direction: column;
+    background: var(--card-bg-01);
+    line-height: 30px;
+    display: none;
+    cursor: pointer;
+}
+
+.show-profileActions{
+    display: block;
 }
 
 .mobile-menu {
