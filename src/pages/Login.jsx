@@ -28,7 +28,7 @@ function Login() {
       setLoading(false);
       toast.success('Successfully logged in');
       navigate('/');
-
+      
     } catch (error) {
       setLoading(false);
       toast.error(error.message);
