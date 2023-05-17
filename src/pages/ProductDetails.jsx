@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import products from '../assets/data/products';
 import ProductsList from '../components/UI/ProductsList';
@@ -12,6 +12,7 @@ import '../styles/product-details.css';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
+import { toast } from 'react-toastify';
 
 const labels = {
   1: 'Useless',
@@ -23,22 +24,42 @@ const labels = {
 
 function ProductDetails() {
   const [tab, setTab] = useState('desc');
-  const [reviewValue, setReviewValue] = useState(0);
-  const [reviewHover, setReviewHover] = useState(-1);
+  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingHover, setRatingHover] = useState(-1);
+  const [newReviews, setNewReviews] = useState([]);
   const reviewUser = useRef('');
   const reviewMsg = useRef('');
   const dispatch = useDispatch();
+
+  const newReviewsArray=[]
 
   const { id } = useParams();
   const product = products.find(item => item.id === id);
   const { imgUrl, productName, price, avgRating, reviews, description, shortDesc, category } = product;
   const relatedProducts = products.filter(item => item.category === category);
-  
-  function submitHandler(e){
-    e.preventDefault();
 
-    const reviewUserName = reviewUser.current.valueOf;
-    const reviewUserMsg = reviewMsg.current.valueOf;
+  function submitHandler(e) {
+    e.preventDefault();
+    
+    const userNameInput = document.getElementById('userNameInput');
+    const messageInput = document.getElementById('messageInput');
+
+    const reviewUserName = reviewUser.current.value;
+    const reviewUserMsg = reviewMsg.current.value;
+
+    const reviewObj = {
+      author: reviewUserName,
+      text: reviewUserMsg,
+      rating: ratingValue
+    }
+
+    newReviewsArray.push(reviewObj);
+    setNewReviews(newReviewsArray);
+    toast.success('Review submitted');
+    console.log(newReviewsArray)
+    userNameInput.value = '';
+    messageInput.value = '';
+    setRatingValue(0);
   }
 
   function addToCart() {
@@ -51,6 +72,11 @@ function ProductDetails() {
 
     toast.success('Product added successfully')
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product])
+
 
   return (
     <Helmet title={productName}>
@@ -86,10 +112,7 @@ function ProductDetails() {
                     <Box sx={{ ml: 1, mt: 0.4, fontSize: 15, color: 'grey', textAlign: 'center', fontWeight: 500 }}>{avgRating} ratings</Box>
                   </Box>
                 </div>
-                <div className='d-flex align-items-center gap-5'>
                 <span className='product-price'>${price}</span>
-                <span>Category: {category.toUpperCase()}</span>
-                </div>
                 <p className='mt-3'>{shortDesc}</p>
                 <motion.button whileTap={{ scale: 1.1 }} className="shop-btn" onClick={addToCart}>Add to Cart</motion.button>
               </div>
@@ -127,26 +150,25 @@ function ProductDetails() {
                         <h4>Leave your experience</h4>
                         <form action="submit" onSubmit={submitHandler}>
                           <div className="form-group">
-                            <input type="text" placeholder='Enter name' ref={reviewUser} />
+                            <input id='userNameInput' type="text" placeholder='Enter name' ref={reviewUser} required />
                           </div>
                           <div className="star-form-group">
                             <Rating
-                              name="hover-feedback"
-                              value={reviewValue}
+                              value={ratingValue}
                               sx={{ color: "coral" }}
                               onChange={(event, newValue) => {
-                                setReviewValue(newValue);
+                                setRatingValue(newValue);
                               }}
                               onChangeActive={(event, newHover) => {
-                                setReviewHover(newHover);
+                                setRatingHover(newHover);
                               }}
                             />
-                            {reviewValue !== null && <Box ml={2}>{labels[reviewHover !== -1 ? reviewHover : reviewValue]}</Box>}
+                            {ratingValue !== null && <Box ml={2}>{labels[ratingHover !== -1 ? ratingHover : ratingValue]}</Box>}
                           </div>
                           <div className="form-group">
-                            <textarea rows={4} type="text" placeholder='Review Message..' ref={reviewMsg}/>
+                            <textarea id='messageInput' rows={4} type="text" placeholder='Review Message..' ref={reviewMsg} required />
                           </div>
-                          <button type='submit' className='shop-btn'>Submit</button>
+                          <motion.button whileTap={{ scale: 1.1 }} type='submit' className='shop-btn'>Submit</motion.button>
                         </form>
                       </div>
                     </div>
