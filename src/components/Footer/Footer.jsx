@@ -2,10 +2,14 @@ import React from 'react';
 import './footer.css';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/eco-logo.png';
+
 
 function Footer() {
   const year = new Date().getFullYear();
+
+  const scrollToTop = () => {
+    window.scrollTo(0,0)
+  };
 
   return (
     <footer className='footer'>
@@ -41,13 +45,13 @@ function Footer() {
               <h4 className="quick-links-titles">Useful Links</h4>
               <ListGroup>
                 <ListGroupItem className='ps-0 border-0'>
-                  <Link to='/shop'>Shop</Link>
+                  <Link to='/shop' onClick={scrollToTop}>Shop</Link>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0'>
-                  <Link to='/cart'>Cart</Link>
+                  <Link to='/cart' onClick={scrollToTop}>Cart</Link>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0'>
-                  <Link to='/login'>Login</Link>
+                  <Link to='/login' onClick={scrollToTop}>Login</Link>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0'>
                   <Link to='#'>Privacy Policy</Link>
