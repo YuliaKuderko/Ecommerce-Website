@@ -2,7 +2,10 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import useAuth from '../custom-hooks/useAuth';
 import '../styles/admin-nav.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase.config';
+import { toast } from 'react-toastify';
 
 const admin_nav = [
     {
@@ -27,6 +30,17 @@ const admin_nav = [
 function AdminNav() {
     const { currentUser } = useAuth();
 
+    const navigate = useNavigate();
+
+    const logout = () => {
+        signOut(auth).then(() => {
+            toast.success('Logged out');
+            navigate('/');
+        }).catch(err => {
+            toast.error(err.message);
+        })
+    }
+
     return (
         <>
             <header className="admin-header">
@@ -34,7 +48,7 @@ function AdminNav() {
                     <Container>
                         <div className='admin-nav-wrapper-top'>
                             <div className='logo'>
-                                <h2>MyStore</h2>
+                                <Link to='/'><h2>MyStore</h2></Link>
                             </div>
                             <div className="search-box">
                                 <input type="text" placeholder='Search...' />
@@ -44,6 +58,9 @@ function AdminNav() {
                                 <span><i class="ri-notification-3-line"></i></span>
                                 <span><i class="ri-settings-2-line"></i></span>
                                 <img src={currentUser && currentUser.photoURL} alt="" />
+                            </div>
+                            <div className='logout-dashboard'>
+                                {currentUser ? <span onClick={logout}><i style={{ color: 'white' }} class="ri-logout-box-r-line"></i></span> : ''}
                             </div>
                         </div>
                     </Container>

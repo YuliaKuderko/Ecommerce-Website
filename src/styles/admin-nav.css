@@ -72,3 +72,8 @@
 .active-admin-menu{
     background: whitesmoke;
 }
+
+.logout-dashboard{
+    margin-left: 20px;
+    cursor: pointer;
+}
