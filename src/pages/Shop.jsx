@@ -73,7 +73,7 @@ function Shop() {
       <section>
         <Container>
           <Row>
-            <Col lg='3' md='6'>
+            <Col>
               <div className="filter-widget">
                 <select onChange={handleCategoryFilter}>
                   <option>Filter By Category</option>
@@ -86,7 +86,7 @@ function Shop() {
                 </select>
               </div>
             </Col>
-            <Col lg='3' md='6' className='text-end'>
+            <Col className='text-end'>
               <div className="filter-widget">
                 <select onChange={handleSortFilter}>
                   <option>Sort By</option>

@@ -45,3 +45,11 @@
         font-size: 15px;
     }
 }
+
+@media screen and (max-width:576px) {
+
+    .filter-widget select{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
