@@ -93,7 +93,8 @@ function Home() {
                 <h3 className='text-white fs-5 mb-3'>Quality Armchair</h3>
               </div>
               <Clock />
-              <motion.button whileTap={{ scale: 1.05 }} className='shop-btn store-btn'><Link to='/shop'>Visit Store</Link></motion.button>
+              <Link to='/shop'><motion.button whileTap={{ scale: 1.05 }} className='shop-btn store-btn'>Visit Store</motion.button></Link>
+              
             </Col>
             <Col lg='6' md='12' className='text-end counter-img'>
               <img src={counterImg} alt="" />
