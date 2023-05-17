@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { cartActions } from '../redux/slices/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Cart() {
@@ -20,7 +21,7 @@ function Cart() {
           <Row>
             <Col lg='9'>
               {
-                cartItems.length === 0 ? <h2 className='fs-4 text-center'>No item added to the cart</h2>
+                cartItems.length === 0 ? <h2 className='fs-4 mb-5 text-center'>No items added to the cart!</h2>
                   : <table className='table bordered'>
                     <thead>
                       <tr>
@@ -47,7 +48,7 @@ function Cart() {
               </div>
               <p className='fs-6 mt-2'>taxes and shipping will be calculated in checkout</p>
               <div>
-                <Link to='/checkout'><button className="shop-btn w-100 ">Checkout</button></Link>
+                <Link to={cartItems.length === 0 ? '/cart' : '/checkout'}><button className="shop-btn w-100" onClick={()=>cartItems.length === 0 ? toast.warning('Please add items to cart') : ''}>Checkout</button></Link>
                 <Link to='/shop'><button className="shop-btn w-100 mt-3">Continue Shopping</button></Link>
               </div>
             </Col>
