@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import '../styles/checkout.css';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 function Checkout() {
+  let [id, setId] = useState(1);
 
   const totalQty = useSelector(state => state.cart.totalQuantity);
   const totalAmount = useSelector(state => state.cart.totalAmount);
@@ -21,31 +23,31 @@ function Checkout() {
               <h6 className="mb-4 fw-bold">Billing Information</h6>
               <Form className='billing-form'>
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Enter your name' />
+                  <input type="text" placeholder='Enter your name' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="email" placeholder='Enter your email' />
+                  <input type="email" placeholder='Enter your email' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="number" placeholder='Phone number' />
+                  <input type="number" placeholder='Phone number' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Street address' />
+                  <input type="text" placeholder='Street address' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='City' />
+                  <input type="text" placeholder='City' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="number" placeholder='Postal code' />
+                  <input type="number" placeholder='Postal code' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Country' />
+                  <input type="text" placeholder='Country' required />
                 </FormGroup>
               </Form>
             </Col>
@@ -55,7 +57,7 @@ function Checkout() {
                 <h6>Subtotal: <span>${totalAmount}</span></h6>
                 <h6>Shipping: <br />free shipping <span>$0</span></h6>
                 <h4>Total cost: <span>${totalAmount}</span></h4>
-                <button className="shop-btn store-btn w-100">Place an order</button>
+                <Link to={`/order/${id}`}><button type='submit' className="shop-btn store-btn w-100" onClick={() => setId(id + 1)}>Place an order</button></Link>
               </div>
             </Col>
           </Row>
