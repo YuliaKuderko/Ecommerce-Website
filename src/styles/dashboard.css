@@ -4,6 +4,8 @@
 .users-box {
     padding: 20px;
     border-radius: 5px;
+    gap: 15px;
+    cursor: pointer;
 }
 
 .revenue-box h5,
@@ -39,4 +41,24 @@
 
 .users-box {
     background: var(--card-bg-02);
+}
+
+@media screen and (max-width:992px) {
+    .revenue-box,
+    .orders-box,
+    .products-box,
+    .users-box {
+        margin-bottom: 20px;
+    }
+}
+
+
+@media screen and (max-width:576px) {
+    .revenue-box,
+    .orders-box,
+    .products-box,
+    .users-box {
+        padding: 20px;
+        margin: 20px 30px 0 30px;
+    }
 }
