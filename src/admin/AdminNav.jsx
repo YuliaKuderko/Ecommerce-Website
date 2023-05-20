@@ -44,7 +44,6 @@ function AdminNav() {
     return (
         <>
             <header className="admin-header">
-                <div className="admin-nav-top">
                     <Container>
                         <div className='admin-nav-wrapper-top'>
                             <div className='logo'>
@@ -64,7 +63,6 @@ function AdminNav() {
                             </div>
                         </div>
                     </Container>
-                </div>
             </header>
 
             <section className="admin-menu p-0">
