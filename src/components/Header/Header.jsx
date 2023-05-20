@@ -4,7 +4,6 @@ import './header.css';
 import { Container } from 'reactstrap';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
-import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
 import { signOut } from 'firebase/auth';
@@ -27,6 +26,7 @@ const nav_links = [
 ]
 
 function Header() {
+
     const headerRef = useRef(null);
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
 
@@ -98,8 +98,11 @@ function Header() {
                             <i class="ri-shopping-bag-line"></i>
                             <span className='badge'>{totalQuantity}</span>
                         </span>
+                        <span className='profile-pic' onClick={profileActionsToggle}>
+                            <img src={currentUser ? currentUser.photoURL : userIcon} alt="" />
+                            <span><i class="ri-arrow-drop-down-fill"></i></span>
+                        </span>
                         <div className='profile'>
-                            <motion.img whileTap={{ scale: 1.1 }} src={currentUser ? currentUser.photoURL : userIcon} alt="" onClick={profileActionsToggle} />
                             <div className="profile-actions" ref={profileActionRef} onClick={profileActionsToggle}>
                                 {
                                     currentUser ? <span onClick={logout}>Logout</span> :
@@ -115,7 +118,6 @@ function Header() {
                             <span className='mobile-icon' onClick={menuToggle}><i class="ri-menu-line"></i></span>
                         </div>
                     </div>
-
                 </div>
             </Container>
         </header>
