@@ -13,25 +13,25 @@ function Dashboard() {
       <Container>
         <Row>
           <Col lg='3'>
-            <motion.div whileHover={{scale: 1.05}} className="revenue-box">
+            <motion.div whileHover={{scale: 1.02}} className="revenue-box">
               <h5>Total Sales</h5>
               <span>$7890</span>
             </motion.div>
           </Col>
           <Col lg='3'>
-            <motion.div whileHover={{scale: 1.05}} className="orders-box">
+            <motion.div whileHover={{scale: 1.02}} className="orders-box">
               <h5>Orders</h5>
               <span>789</span>
             </motion.div>
           </Col>
           <Col lg='3'>
-            <motion.div whileHover={{scale: 1.05}} className="products-box">
+            <motion.div whileHover={{scale: 1.02}} className="products-box">
               <h5>Total Products</h5>
               <span>{products.length}</span>
             </motion.div>
           </Col>
           <Col lg='3'>
-            <motion.div whileHover={{scale: 1.05}} className="users-box">
+            <motion.div whileHover={{scale: 1.02}} className="users-box">
               <h5>Total Users</h5>
               <span>{users.length}</span>
             </motion.div>
