@@ -3,8 +3,9 @@ import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import '../styles/checkout.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { cartActions } from '../redux/slices/cartSlice';
 
 
 function Checkout() {
@@ -12,6 +13,18 @@ function Checkout() {
 
   const totalQty = useSelector(state => state.cart.totalQuantity);
   const totalAmount = useSelector(state => state.cart.totalAmount);
+
+  const dispatch = useDispatch();
+
+  function handleOrder() {
+    setId(id + 1);
+    dispatch(cartActions.clearCart());
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant',
+    });
+  }
 
   return (
     <Helmet title={"Checkout"}>
@@ -57,7 +70,7 @@ function Checkout() {
                 <h6>Subtotal: <span>${totalAmount}</span></h6>
                 <h6>Shipping: <br />free shipping <span>$0</span></h6>
                 <h4>Total cost: <span>${totalAmount}</span></h4>
-                <Link to={`/order/${id}`}><button type='submit' className="shop-btn store-btn w-100" onClick={() => setId(id + 1)}>Place an order</button></Link>
+                <Link to={`/order/${id}`}><button type='submit' className="shop-btn store-btn w-100" onClick={handleOrder}>Place an order</button></Link>
               </div>
             </Col>
           </Row>
