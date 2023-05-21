@@ -4,7 +4,7 @@ import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import '../styles/checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cartActions } from '../redux/slices/cartSlice';
 
 
@@ -15,6 +15,15 @@ function Checkout() {
   const totalAmount = useSelector(state => state.cart.totalAmount);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const nameInput = document.getElementById('nameInput');
+  const emailInput = document.getElementById('emailInput');
+  const phoneInput = document.getElementById('phoneInput');
+  const streetInput = document.getElementById('streetInput');
+  const cityInput = document.getElementById('cityInput');
+  const zipInput = document.getElementById('zipInput');
+  const countryInput = document.getElementById('countryInput');
 
   function handleOrder() {
     setId(id + 1);
@@ -24,6 +33,9 @@ function Checkout() {
       left: 0,
       behavior: 'instant',
     });
+    if (nameInput.value && emailInput.value && phoneInput.value && streetInput.value && cityInput.value && zipInput.value && countryInput.value) {
+      navigate(`/order/${id}`)
+    }
   }
 
   return (
@@ -34,33 +46,33 @@ function Checkout() {
           <Row>
             <Col lg='8'>
               <h6 className="mb-4 fw-bold">Billing Information</h6>
-              <Form className='billing-form'>
+              <Form className='billing-form' action='submit' id="myform">
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Enter your name' required />
+                  <input type="text" id='nameInput' placeholder='Enter your name' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="email" placeholder='Enter your email' required />
+                  <input type="email" id='emailInput' placeholder='Enter your email' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="number" placeholder='Phone number' required />
+                  <input type="number" id='phoneInput' placeholder='Phone number' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Street address' required />
+                  <input type="text" id='streetInput' placeholder='Street address' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='City' required />
+                  <input type="text" id='cityInput' placeholder='City' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="number" placeholder='Postal code' required />
+                  <input type="number" id='zipInput' placeholder='Postal code' required />
                 </FormGroup>
 
                 <FormGroup className="form-group">
-                  <input type="text" placeholder='Country' required />
+                  <input type="text" id='countryInput' placeholder='Country' required />
                 </FormGroup>
               </Form>
             </Col>
@@ -70,7 +82,7 @@ function Checkout() {
                 <h6>Subtotal: <span>${totalAmount}</span></h6>
                 <h6>Shipping: <br />free shipping <span>$0</span></h6>
                 <h4>Total cost: <span>${totalAmount}</span></h4>
-                <Link to={`/order/${id}`}><button type='submit' className="shop-btn store-btn w-100" onClick={handleOrder}>Place an order</button></Link>
+                <button type='submit' form='myform' className="shop-btn store-btn w-100" onClick={handleOrder}>Place an order</button>
               </div>
             </Col>
           </Row>
