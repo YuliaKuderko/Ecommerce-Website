@@ -11,6 +11,7 @@ import AddProducts from '../admin/AddProducts';
 import AllProducts from '../admin/AllProducts';
 import Dashboard from '../admin/Dashboard';
 import Users from '../admin/Users';
+import OrderConfirm from '../pages/OrderConfirm';
 
 function Routers() {
   return (
@@ -29,6 +30,7 @@ function Routers() {
       </Route>
       <Route path='login' element={<Login />} />
       <Route path='signup' element={<Signup />} />
+      <Route path='/order/:id' element={<OrderConfirm />} />
     </Routes>
   )
 }
