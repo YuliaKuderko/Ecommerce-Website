@@ -7,10 +7,15 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-import { Flip, Slide, ToastContainer, Zoom } from "react-toastify";
+import { Flip, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+let persistor = persistStore(store);
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -23,7 +28,9 @@ root.render(
           closeOnClick
           pauseOnHover={false}
         />
-        <App />
+        <PersistGate persistor={persistor}>
+           <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
