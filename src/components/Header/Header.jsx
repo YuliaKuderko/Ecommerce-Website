@@ -4,11 +4,12 @@ import './header.css';
 import { Container } from 'reactstrap';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
 import { toast } from 'react-toastify';
+import { cartActions } from '../../redux/slices/cartSlice';
 
 const nav_links = [
     {
@@ -34,10 +35,15 @@ function Header() {
     const menuRef = useRef(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { currentUser } = useAuth();
 
     function scrollToTop() {
-        window.scrollTo(0, 0);
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant',
+          });
     };
 
     function stickyHeader() {
@@ -53,6 +59,7 @@ function Header() {
     const logout = () => {
         signOut(auth).then(() => {
             toast.success('Logged out');
+            dispatch(cartActions.clearCart());
             navigate('/');
         }).catch(err => {
             toast.error(err.message);
