@@ -5,6 +5,8 @@ import { db, storage } from '../firebase.config';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { Select, InputLabel, MenuItem } from '@mui/material';
+import { FormControl } from '@mui/material';
 
 function AddProducts() {
 
@@ -97,16 +99,22 @@ function AddProducts() {
                         <label for='priceInput'>Price</label>
                         <input id='priceInput' type="text" placeholder='$100' value={enterPrice} onChange={e => setEnterPrice(e.target.value)} required />
                       </FormGroup>
-                      <FormGroup className='form-group d-flex flex-column w-50'>
-                        <label for='categoryInput'>Category</label>
-                        <select id='categoryInput' className='p-2' value={enterCategory} onChange={e => setEnterCategory(e.target.value)} required>
-                          <option value="chair">Chair</option>
-                          <option value="sofa">Sofa</option>
-                          <option value="mobile">Mobile</option>
-                          <option value="watch">Watch</option>
-                          <option value="wireless">Wireless</option>
-                        </select>
-                      </FormGroup>
+                      <FormControl required variant="outlined" sx={{ width: '50%' }}>
+                        <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+                        <Select
+                          labelId="demo-simple-select-outlined-label"
+                          id="demo-simple-select-outlined"
+                          value={enterCategory}
+                          onChange={e => setEnterCategory(e.target.value)}
+                          label="Category"
+                        >
+                          <MenuItem value="chair">Chair</MenuItem>
+                          <MenuItem value="sofa">Sofa</MenuItem>
+                          <MenuItem value="mobile">Mobile</MenuItem>
+                          <MenuItem value="watch">Watch</MenuItem>
+                          <MenuItem value="wireless">Wireless</MenuItem>
+                        </Select>
+                      </FormControl>
                     </div>
                     <div>
                       <FormGroup className='form-group'>
