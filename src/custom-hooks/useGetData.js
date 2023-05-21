@@ -20,7 +20,6 @@ function useGetData(collectionName) {
 
     }, [])
 
-
     return (
         { data, loading }
     )

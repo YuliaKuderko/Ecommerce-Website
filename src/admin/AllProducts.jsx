@@ -12,7 +12,7 @@ function AllProducts() {
 
   const deleteProduct = async (id) => {
     await deleteDoc(doc(db, 'products', id));
-    toast.success('Deleted!')
+    toast.success('Item Deleted!')
   }
 
 
