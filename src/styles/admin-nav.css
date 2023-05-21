@@ -103,6 +103,12 @@
     .admin-nav-top-right {
         column-gap: 20px;
     }
+
+    .admin-menu-list {
+        column-gap: 22px;
+        padding: 18px;
+        line-height: 35px;
+    }
 }
 
 @media screen and (max-width:576px) {
