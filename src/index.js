@@ -23,7 +23,7 @@ root.render(
         <ToastContainer
           theme="dark"
           position="top-left"
-          autoClose={3000}
+          autoClose={1500}
           transition={Flip}
           closeOnClick
           pauseOnHover={false}
