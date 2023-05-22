@@ -26,15 +26,15 @@ function Checkout() {
   const countryInput = document.getElementById('countryInput');
 
   function handleOrder() {
-    setId(id + 1);
-    dispatch(cartActions.clearCart());
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant',
-    });
     if (nameInput.value && emailInput.value && phoneInput.value && streetInput.value && cityInput.value && zipInput.value && countryInput.value) {
-      navigate(`/order/${id}`)
+      navigate(`/order/${id}`);
+      dispatch(cartActions.clearCart());
+      setId(id + 1);
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant',
+      });
     }
   }
 
