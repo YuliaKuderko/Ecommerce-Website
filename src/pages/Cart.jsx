@@ -29,7 +29,8 @@ function Cart() {
                         <th>Title</th>
                         <th>Price</th>
                         <th>Qty</th>
-                        <th>Delete</th>
+                        <th>Total</th>
+                        <th className='text-center'>Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -48,7 +49,7 @@ function Cart() {
               </div>
               <p className='fs-6 mt-2'>taxes and shipping will be calculated in checkout</p>
               <div>
-                <Link to={cartItems.length === 0 ? '/cart' : '/checkout'}><button className="shop-btn w-100" onClick={()=>cartItems.length === 0 ? toast.warning('Please add items to cart') : ''}>Checkout</button></Link>
+                <Link to={cartItems.length === 0 ? '/cart' : '/checkout'}><button className="shop-btn w-100" onClick={() => cartItems.length === 0 ? toast.warning('Please add items to cart') : ''}>Checkout</button></Link>
                 <Link to='/shop'><button className="shop-btn w-100 mt-3">Continue Shopping</button></Link>
               </div>
             </Col>
@@ -63,6 +64,14 @@ const Tr = ({ item }) => {
 
   const dispatch = useDispatch();
 
+  function addProduct() {
+    dispatch(cartActions.increaseItem(item.id));
+  }
+
+  function decreaseProduct() {
+    dispatch(cartActions.decreaseItem(item.id));
+  }
+
   function deleteProduct() {
     dispatch(cartActions.deleteItem(item.id));
   }
@@ -71,8 +80,16 @@ const Tr = ({ item }) => {
     <td><img src={item.imgUrl} alt="" /></td>
     <td>{item.productName}</td>
     <td>${item.price}</td>
-    <td>{item.quantity}px</td>
-    <td><motion.i class="ri-delete-bin-line" whileTap={{ scale: 1.1 }} onClick={deleteProduct}></motion.i></td>
+    <td>
+      <div className='cart-product-quantity'>
+        <button onClick={decreaseProduct}>-</button>
+        <div className='count'>{item.quantity}</div>
+        <button onClick={addProduct}>+</button>
+      </div>
+    </td>
+    <td>${item.price * item.quantity}</td>
+    <td className='text-center'><motion.i class="ri-delete-bin-line" whileTap={{ scale: 1.1 }} onClick={deleteProduct}></motion.i></td>
+ 
   </tr>
 }
 
