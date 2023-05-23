@@ -39,22 +39,17 @@ function Shop() {
         setProductsData(products);
         break;
     }
-
-    /* if (filterValue === 'sofa') {
-      const filteredProducts = products.filter(item => item.category === 'sofa');
-      setProductsData(filteredProducts);
-    } */
   }
 
   function handleSortFilter(e) {
     const filterValue = e.target.value;
     if (filterValue === 'ascending') {
-      const filteredProducts = products.sort((a, b) => { a.price - b.price });
+      const filteredProducts = [...productsData].sort((a, b) => a.price - b.price);
       setProductsData(filteredProducts);
     }
 
     if (filterValue === 'descending') {
-      const filteredProducts = products.sort((a, b) => { b.price - a.price });
+      const filteredProducts = [...productsData].sort((a, b) => b.price - a.price);
       setProductsData(filteredProducts);
     }
   }
